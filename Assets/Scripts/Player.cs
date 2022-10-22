@@ -23,9 +23,9 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        /*if (collision.transform.tag == "Vehicle")
+        if (collision.transform.tag == "Vehicle")
         {
-            transform.position = Vector3.zero;
-        }*/
+            rig.AddForce( new Vector3 (100,100,0));
+        }
     }
 }

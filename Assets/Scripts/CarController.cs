@@ -6,7 +6,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     private Rigidbody rig;
-    private int speed;
+    public int speed;
     private Vector3 startingPosition;
 
     void Start()
