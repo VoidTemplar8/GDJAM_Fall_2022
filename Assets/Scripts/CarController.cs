@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    private Rigidbody rig;
+    public Rigidbody rig;
     public int speed;
     private Vector3 startingPosition;
 
@@ -15,15 +15,20 @@ public class CarController : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         speed = Random.Range(CarSpawner.instance.minSpeed, CarSpawner.instance.maxSpeed);
         rig.AddForce(transform.forward * speed, ForceMode.Impulse);
-        Debug.Log(rig.velocity);
     }
 
     private void Update()
     {
-        
         if ((transform.position - startingPosition).magnitude > CarSpawner.instance.maxDistance)
         {
             RestartCar();
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            rig.AddForce(transform.forward, ForceMode.Impulse);
         }
     }
 
