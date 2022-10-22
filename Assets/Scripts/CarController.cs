@@ -12,6 +12,7 @@ public class CarController : MonoBehaviour
         speed = Random.Range(CarSpawner.instance.minSpeed, CarSpawner.instance.maxSpeed);
         Debug.Log($"Car Speed is {speed}");
         endPosition = transform.position + transform.forward.normalized * CarSpawner.instance.maxDistance;
+        Debug.Log($"Car end position is {transform.forward.normalized * CarSpawner.instance.maxDistance}");
     }
 
     private void Update()
