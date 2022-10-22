@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space) && rig.velocity == new Vector3(0, 0, 0))
         {
             rig.freezeRotation = false;
-            rig.velocity = new Vector3(Input.GetAxis("Horizontal"), 1, Input.GetAxis("Vertical"));
+            rig.velocity = new Vector3(Input.GetAxis("Horizontal")*4, 1, Input.GetAxis("Vertical") * 4);
             rig.AddForce(new Vector3(Input.GetAxis("Horizontal") * 1000, 100, Input.GetAxis("Vertical") * 1000));
             transform.rotation = Quaternion.Euler(new Vector3(-Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal")));
         }
