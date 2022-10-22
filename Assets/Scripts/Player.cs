@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         if (rig.velocity == new Vector3(rig.velocity.x, 0, rig.velocity.z) && gameActive)
         {
             rig.velocity = Vector3.zero;
-            transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 100), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 100);
+            transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 50), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 50);
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
         if (!gameActive)
@@ -49,7 +49,12 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "Vehicle")
         {
             rig.freezeRotation = false;
-            rig.AddForce( new Vector3 (100, 100, rig.velocity.z));
+            rig.AddForce( new Vector3 (100, 100, rig.velocity.z - 100));
+        }
+        if (collision.transform.tag == "Bounds")
+        {
+            rig.freezeRotation = false;
+            rig.AddForce(new Vector3(0, 0, 1));
         }
         if (collision.transform.tag == "Finish")
         {

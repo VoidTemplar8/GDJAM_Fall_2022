@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Vehicle
   - Ground
+  - Bounds
   layers:
   - Default
   - TransparentFX
