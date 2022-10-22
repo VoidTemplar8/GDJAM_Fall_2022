@@ -11,12 +11,16 @@ public class CarSpawner : MonoBehaviour
     public int maxSpeed;
     public int minSpeed;
 
-    void Start()
+    private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+    }
+
+    void Start()
+    {
         foreach (GameObject spawnlocation in spawnLocations)
         {
             Instantiate(carPrefab, spawnlocation.transform.position, spawnlocation.transform.rotation);
