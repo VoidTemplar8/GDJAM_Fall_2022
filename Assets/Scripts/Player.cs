@@ -5,26 +5,25 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Rigidbody rig;
-    public int maxSpeed;
-    public int regSpeed;
+    Rigidbody rig;
+    public float speed;
 
     void Start()
     {
-
+        rig = GetComponent<Rigidbody>();
     }
     
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 100), 1, transform.position.z + Input.GetAxis("Vertical") / 100);
+        transform.position = transform.position + new Vector3(Input.GetAxis("Horizontal") * speed, 0, Input.GetAxis("Vertical") * speed);
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.transform.tag == "Vehicle")
         {
-            transform.position = Vector3.zero;
+            //transform.position = Vector3.zero;
         }
     }
 }

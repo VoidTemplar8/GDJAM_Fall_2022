@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 7244665236110452898, guid: b493ca448a8aa2949b6d73bb59f8f8e7, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b493ca448a8aa2949b6d73bb59f8f8e7, type: 3}
 --- !u!1 &705507993
@@ -541,7 +545,7 @@ MeshCollider:
   m_GameObject: {fileID: 899413963}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -1016,8 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig: {fileID: 1895470729}
-  maxSpeed: 10
-  regSpeed: 10
+  speed: 0.01
 --- !u!54 &1895470729
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1029,11 +1032,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 116
-  m_CollisionDetection: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1901444467
 GameObject:
   m_ObjectHideFlags: 0
