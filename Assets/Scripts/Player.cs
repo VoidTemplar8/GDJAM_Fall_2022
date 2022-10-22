@@ -25,18 +25,25 @@ public class Player : MonoBehaviour
     void Update()
     {
         GameObject.Find("Main Camera").transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z - 5);
+        if (Input.GetKeyUp(KeyCode.Space) && rig.velocity == new Vector3(0, 0, 0))
+        {
+            rig.freezeRotation = false;
+            rig.velocity = new Vector3(Input.GetAxis("Horizontal"), 1, Input.GetAxis("Vertical"));
+            rig.AddForce(new Vector3(Input.GetAxis("Horizontal") * 1000, 100, Input.GetAxis("Vertical") * 1000));
+            transform.rotation = Quaternion.Euler(new Vector3(-Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal")));
+        }
         if (rig.velocity == new Vector3(rig.velocity.x, 0, rig.velocity.z) && gameActive)
         {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             rig.velocity = Vector3.zero;
             transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 50), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 50);
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
         if (!gameActive)
         {
             GameObject.Find("Dim").transform.position = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z - 5);
             GameObject.Find("Back to menu").transform.position = buttonPos1;
             GameObject.Find("Replay").transform.position = buttonPos2;
-            GameObject.Find("Timer").transform.position = new Vector3(0,-300,0);
+            GameObject.Find("Timer").transform.position = new Vector3(0, -300, 0);
         }
     }
 
