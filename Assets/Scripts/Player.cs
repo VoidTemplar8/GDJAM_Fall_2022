@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         GameObject.Find("Main Camera").transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z - 5);
+        GameObject.Find("Player Lamp").transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
         if (Input.GetKeyUp(KeyCode.Space) && rig.velocity == new Vector3(0, 0, 0))
         {
             rig.freezeRotation = false;
