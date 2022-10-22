@@ -27,4 +27,9 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Title Screen");
     }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene("Game");
+    }
 }

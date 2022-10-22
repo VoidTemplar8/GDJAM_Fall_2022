@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     {
         buttonPos1 = GameObject.Find("Back to menu").transform.position;
         GameObject.Find("Back to menu").transform.position = new Vector3 (0,-300, 0);
+        buttonPos2 = GameObject.Find("Replay").transform.position;
+        GameObject.Find("Replay").transform.position = new Vector3(0, -300, 0);
     }
     
     // Update is called once per frame
@@ -33,6 +35,8 @@ public class Player : MonoBehaviour
         {
             GameObject.Find("Dim").transform.position = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z - 5);
             GameObject.Find("Back to menu").transform.position = buttonPos1;
+            GameObject.Find("Replay").transform.position = buttonPos2;
+            GameObject.Find("Timer").transform.position = new Vector3(0,-300,0);
         }
     }
 
