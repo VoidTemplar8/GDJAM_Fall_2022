@@ -1,22 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    private Rigidbody rig;
     private int speed;
-    private Vector3 endPosition;
+    private Vector3 startingPosition;
 
     void Start()
     {
+        startingPosition = transform.position;
+        rig = GetComponent<Rigidbody>();
         speed = Random.Range(CarSpawner.instance.minSpeed, CarSpawner.instance.maxSpeed);
-        Debug.Log($"Car Speed is {speed}");
-        endPosition = transform.position + transform.forward.normalized * CarSpawner.instance.maxDistance;
-        Debug.Log($"Car end position is {transform.forward.normalized * CarSpawner.instance.maxDistance}");
+        rig.AddForce(transform.forward * speed, ForceMode.Impulse);
+        Debug.Log(rig.velocity);
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, endPosition, Time.deltaTime * speed);
+        
+        if ((transform.position - startingPosition).magnitude > CarSpawner.instance.maxDistance)
+        {
+            RestartCar();
+        }
+    }
+
+    private void RestartCar()
+    {
+        rig.velocity = Vector3.zero;
+        if (transform.parent.IsUnityNull())
+        {
+            transform.position = transform.position - transform.forward.normalized * CarSpawner.instance.maxDistance;
+        } else
+        {
+            transform.localPosition = Vector3.zero;
+        }
+        speed = Random.Range(CarSpawner.instance.minSpeed, CarSpawner.instance.maxSpeed);
+        rig.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 }

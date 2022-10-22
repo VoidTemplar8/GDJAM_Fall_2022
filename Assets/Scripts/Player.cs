@@ -11,12 +11,20 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+
     }
     
     // Update is called once per frame
     void Update()
     {
         transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 100), 1, transform.position.z + Input.GetAxis("Vertical") / 100);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.tag == "Vehicle")
+        {
+            transform.position = Vector3.zero;
+        }
     }
 }
