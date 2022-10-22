@@ -1018,8 +1018,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig: {fileID: 1895470729}
-  maxSpeed: 10
-  regSpeed: 10
 --- !u!54 &1895470729
 Rigidbody:
   m_ObjectHideFlags: 0
