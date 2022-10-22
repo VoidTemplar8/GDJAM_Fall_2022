@@ -22,4 +22,9 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
+    public void Title()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
 }

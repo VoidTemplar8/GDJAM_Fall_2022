@@ -4,16 +4,19 @@ using Unity.VisualScripting;
 using System;
 using UnityEngine;
 using JetBrains.Annotations;
+using UnityEditor;
 
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody rig;
     public bool gameActive = true;
+    Vector3 buttonPos1, buttonPos2;
 
     void Start()
     {
-
+        buttonPos1 = GameObject.Find("Back to menu").transform.position;
+        GameObject.Find("Back to menu").transform.position = new Vector3 (0,-300, 0);
     }
     
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
         if (!gameActive)
         {
             GameObject.Find("Dim").transform.position = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z - 5);
+            GameObject.Find("Back to menu").transform.position = buttonPos1;
         }
     }
 
