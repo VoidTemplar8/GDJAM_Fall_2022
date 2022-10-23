@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         if (rig.velocity == new Vector3(rig.velocity.x, 0, rig.velocity.z) && gameActive)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
             rig.velocity = Vector3.zero;
             transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 50), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 50);
         }
