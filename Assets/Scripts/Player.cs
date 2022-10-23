@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public bool gameActive = false;
     public Text text;
     public Timer time;
+    public int speed;
     Vector3 buttonPos1, buttonPos2;
     bool skip;
 
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
             rig.velocity = Vector3.zero;
-            transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 50), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 50);
+            transform.position = new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / speed), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / speed);
         }
         if (!gameActive)
         {
