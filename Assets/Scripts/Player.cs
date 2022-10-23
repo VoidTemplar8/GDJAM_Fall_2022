@@ -6,7 +6,6 @@ using UnityEngine;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine.UI;
-using OpenCover.Framework.Model;
 
 public class Player : MonoBehaviour
 {

@@ -7,6 +7,7 @@ using System;
 public class Timer : MonoBehaviour
 {
     public Text text;
+    public Player player;
     public float elapsedTime;
     // Start is called before the first frame update
     void Start()
@@ -18,10 +19,13 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        if (60 - Math.Floor(elapsedTime) != 60)
+        if (player.gameActive)
         {
-            text.text = $"Time: {60 - Math.Floor(elapsedTime)}";
+            elapsedTime += Time.deltaTime;
+            if (60 - Math.Floor(elapsedTime) != 60)
+            {
+                text.text = $"Time: {60 - Math.Floor(elapsedTime)}";
+            }
         }
     }
 }
