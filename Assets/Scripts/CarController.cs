@@ -28,7 +28,8 @@ public class CarController : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            rig.AddForce(transform.forward, ForceMode.Impulse);
+            rig.velocity = Vector3.zero;
+            rig.AddForce(transform.forward * speed * 0.5f, ForceMode.Impulse);
         }
     }
 
