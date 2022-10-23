@@ -6,15 +6,17 @@ using UnityEngine;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine.UI;
+using OpenCover.Framework.Model;
 
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody rig;
-    public bool gameActive = true;
+    public bool gameActive = false;
     public Text text;
     public Timer time;
     Vector3 buttonPos1, buttonPos2;
+    bool skip;
 
     void Start()
     {
@@ -54,7 +56,11 @@ public class Player : MonoBehaviour
         {
             gameActive = false;
             rig.freezeRotation = false;
-            rig.AddForce(new Vector3((float)(transform.position.x + Input.GetAxis("Horizontal") / 50), transform.position.y, transform.position.z + Input.GetAxis("Vertical") / 50));
+            if (!skip)
+            {
+                rig.AddForce(new Vector3(100, 100, rig.velocity.z + 100));
+                skip = true;
+            }
             text.text = "You\nFailed";
         }
     }
