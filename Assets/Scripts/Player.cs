@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
                 rig.AddForce(new Vector3(100, 100, rig.velocity.z + 100));
                 skip = true;
             }
-            text.text = "You\nFailed";
+            text.color = Color.red;
+            text.text = "You Ran\nOut Of Time";
         }
     }
 
@@ -86,7 +87,16 @@ public class Player : MonoBehaviour
             rig.freezeRotation = false;
             rig.AddForce(new Vector3(0, 0, -1));
             gameActive = false;
+            text.color = Color.green;
             text.text = "Succesful\nDelivery";
+        }
+        if (collision.transform.tag == "Respawn")
+        {
+            rig.freezeRotation = false;
+            rig.AddForce(new Vector3(0, 0, -1));
+            gameActive = false;
+            text.color = Color.magenta;
+            text.text = "Secret\nEnding";
         }
     }
 }
