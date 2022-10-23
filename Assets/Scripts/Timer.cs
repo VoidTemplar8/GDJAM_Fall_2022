@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public Text text;
+    public TextMeshProUGUI text;
     public Player player;
     public float elapsedTime;
     // Start is called before the first frame update
